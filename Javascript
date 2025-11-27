@@ -1,0 +1,69 @@
+document.getElementById('convertBtn').addEventListener('click', () => {
+  const input = document.getElementById('adjListInput').value.trim();
+  const displayDiv = document.getElementById('matrixDisplay');
+
+  // Clear previous matrix
+  displayDiv.innerHTML = '';
+
+  if (!input) {
+    alert('Please enter an adjacency list in JSON format.');
+    return;
+  }
+
+  let adjList;
+  try {
+    adjList = JSON.parse(input);
+  } catch (e) {
+    alert('Invalid JSON format. Please check your input.');
+    return;
+  }
+
+  const matrix = adjacencyListToMatrix(adjList);
+  displayMatrix(matrix, displayDiv);
+});
+
+function adjacencyListToMatrix(adjList) {
+  if (!adjList || Object.keys(adjList).length === 0) {
+    return [];
+  }
+  const nodes = Object.keys(adjList).map(k => parseInt(k));
+  const n = Math.max(...nodes) + 1;
+  const matrix = Array.from({ length: n }, () => Array(n).fill(0));
+
+  for (const [node, neighbors] of Object.entries(adjList)) {
+    const nNode = parseInt(node);
+    neighbors.forEach(neighbor => {
+      matrix[nNode][neighbor] = 1;
+    });
+  }
+  return matrix;
+}
+
+function displayMatrix(matrix, container) {
+  if (!matrix.length) {
+    container.innerHTML = '<p>No data to display.</p>';
+    return;
+  }
+
+  matrix.forEach((row, rowIndex) => {
+    const rowDiv = document.createElement('div');
+    rowDiv.className = 'matrix-row';
+
+    row.forEach((cell, colIndex) => {
+      const cellDiv = document.createElement('div');
+      cellDiv.className = 'matrix-cell';
+      cellDiv.textContent = cell;
+      
+      // Add animation effect
+      setTimeout(() => {
+        if (cell === 1) {
+          cellDiv.classList.add('active');
+        }
+      }, 100 * (rowIndex + colIndex));
+
+      rowDiv.appendChild(cellDiv);
+    });
+
+    container.appendChild(rowDiv);
+  });
+}
