@@ -1,0 +1,64 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Graph Converter - Portfolio</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <div class="container header-container">
+      <h1 class="title">Graph Converter</h1>
+      <p class="subtitle">Transforming Adjacency Lists into Matrices with Elegance</p>
+    </div>
+  </header>
+
+  <section class="intro-section">
+    <div class="container intro-container">
+      <h2>Welcome to My Graph Converter Tool</h2>
+      <p>
+        A sleek web-based application demonstrating your ability to convert adjacency lists into adjacency matrices. Interactive, intuitive, and visually appealing.
+      </p>
+    </div>
+  </section>
+
+  <section class="demo-section">
+    <div class="container demo-container">
+      <h2>Try It Out</h2>
+      <div class="input-area">
+        <textarea id="adjListInput" placeholder='Enter adjacency list as JSON, e.g., {"0": [1, 2], "1": [2], "2": [0, 3], "3": [2]}'></textarea>
+        <button id="convertBtn">Convert to Matrix</button>
+      </div>
+      <div class="matrix-area" id="matrixDisplay"></div>
+    </div>
+  </section>
+
+  <section class="features-section">
+    <div class="container features-container">
+      <h2>Features</h2>
+      <div class="feature-list">
+        <div class="feature-item">
+          <h3>Interactive Input</h3>
+          <p>Enter your adjacency list in JSON format for instant conversion.</p>
+        </div>
+        <div class="feature-item">
+          <h3>Beautiful Visualization</h3>
+          <p>Clear, animated adjacency matrices with professional styling.</p>
+        </div>
+        <div class="feature-item">
+          <h3>Responsive & Modern</h3>
+          <p>Designed to look great on desktops, tablets, and phones.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-container">
+      <p>Created by [Your Name] | <a href="mailto:your.email@example.com">Contact Me</a></p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
